@@ -19,13 +19,6 @@ masked = cv2.bitwise_and(imagen, imagen, mask= mask)
 cv2.imshow("Mascara Aplicada", masked)
 
 
-mask = np.zeros(imagen.shape[:2], dtype ="uint8")
-cv2.circle(mask, (cx, cy), 100, 255, -1)
-
-masked = cv2.bitwise_and(imagen, imagen, mask = mask)
-cv2.imshow("Mask", mask)
-cv2.imshow("Mascara Aplicada Circulo", masked)
-
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
