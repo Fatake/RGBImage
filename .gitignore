@@ -1,6 +1,6 @@
 # Prerequisites
 *.d
-!/latex/*.tex
+!latex/*.tex
 
 # Object files
 *.o
