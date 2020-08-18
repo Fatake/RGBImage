@@ -1,7 +1,119 @@
-\documentclass{article}
-\title{RGB en Imagenes}
-\date{2018-03-01}
-\author{Paulo Cesar Ruiz}
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[margin=1in,letterpaper]{geometry}
+\usepackage{cite}
+\usepackage[final]{hyperref} 
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=blue,
+	filecolor=magenta,
+	urlcolor=blue         
+}
+\usepackage{blindtext}
+
+
 \begin{document}
-	Mi primer documento en \LaTeX!
+
+\title{Análisis de imágenes en espacios de color RGB}
+\author{Ruiz Lozano Paulo Cesar}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+In this experiment we studied pendulum motion in a non-uniformly accelerating reference frame. \textbf{Special notes:} Prof Goldman specifically requested to not have ``100" sig figs, put font on figure axes in readable size, and don't put grids on plots!
+\end{abstract}
+
+%introduccion
+\section{Introducción}
+
+En esta tarea se realiza el análisis de la imagen de un gato, por espacios de colores y se expone el algoritmo aplicado en 4 diferentes lenguajes de programación para generar el negativo de una imagen.
+Los 4 lenguajes de programación utilizados son:
+\begin{itemize}
+	\item Python
+	\item Java
+	\item C
+	\item Ruby
+\end{itemize}
+
+%Marco teorico
+\section{Marco teórico}
+
+Sea \textit{I} el conjunto de matrices en los espacios de color de una imagen, 
+donde cada \textit{i} $\in$  \textit{I} es de la forma ( \textit{u}, \textit{u} , \textit{u} ), \textit{u} $\in$ ( 0, 255 )
+
+\subsection{Negativo de una imagen}
+El negativo \textit{$\ddot{V}$} de una imagen se define como:
+\begin{equation}
+   \ddot{V} = 255 - u
+   \label{Eq:equation1} %the label lets you refer to the equation later
+\end{equation}
+Entonces, cada imagen \textit{I} tiene 3 espacios de color \textbf{RGB}.
+Para obtener el negativo se usa el siguiente algoritmo:
+\begin{gather*}
+for (\textit{i} \in  \textit{I}) do:
+	i[a,b] \Longleftarrow 255 - i[a,b]
+\end{gather*}
+
+
+
+\section{Python}
+Código en python:
+\begin{minted}{python}
+  Se divides la imagen por canales
+  chanel_r = imagen[:,:,2]//Canal R
+  chanel_g = imagen[:,:,1]//Canal G
+  chanel_b = imagen[:,:,0]//Canal B
+
+  Se obtiene las dimensiones
+  row, col = chanel_r.shape
+
+  Se generan los canales negativos
+  neg_r = np.zeros((row, col), dtype=np.uint8)
+  neg_g = np.zeros((row, col), dtype=np.uint8)
+  neg_b = np.zeros((row, col), dtype=np.uint8)
+
+  Se obtiene el negativo de cada Canal
+  for i in range(0, row):                                            
+      for j in range(0, col):                                          
+          neg_r[a, b] = 255 - chanel_r[a, b]
+
+  for i in range(0, row):                                            
+      for j in range(0, col):                                          
+          neg_g[a, b] = 255 - chanel_g[a, b]
+
+  for i in range(0, row):                                            
+      for j in range(0, col):                                          
+          neg_b[a, b] = 255 - chanel_b[a, b]
+
+  negativo = imagen
+  negativo[:,:,2] = neg_r
+  negativo[:,:,1] = neg_g
+  negativo[:,:,0] = neg_b
+\end{minted}
+
+%Conclusion
+\section{Conclusions}
+Conclusiones del trabajo
+
+
+\begin{thebibliography}{99}
+
+\bibitem{melissinos}
+A.~C. Melissinos and J. Napolitano, \textit{Experiments in Modern Physics},
+(Academic Press, New York, 2003).
+
+\bibitem{Cyr}
+N.\ Cyr, M.\ T$\hat{e}$tu, and M.\ Breton,
+% "All-optical microwave frequency standard: a proposal,"
+IEEE Trans.\ Instrum.\ Meas.\ \textbf{42}, 640 (1993).
+
+\bibitem{Wiki} \emph{Expected value},  available at
+\texttt{http://en.wikipedia.org/wiki/Expected\_value}.
+
+\end{thebibliography}
+
+
 \end{document}

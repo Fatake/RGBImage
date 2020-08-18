@@ -33,7 +33,7 @@ def negativo(imagen):
     chanel_g = imagen[:,:,1]#Canal G
     chanel_b = imagen[:,:,0]#Canal B
 
-    #Optienes las dimenciones
+    #Obtienes las dimenciones
     row, col = chanel_r.shape
 
     #Generas los canales negativos
